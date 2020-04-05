@@ -1,0 +1,32 @@
+{
+  "name": "testmarker2020",
+  "version": "1.0.0",
+  "description": "Telegram Test Marker. That works.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src --exec babel-node --presets babel-preset-env --plugins babel-plugin-transform-object-rest-spread",
+    "update": "sequelize db:drop && sequelize db:create --charset utf8mb4 && sequelize db:migrate --debug && sequelize db:seed:all --debug"
+  },
+  "author": "Azamat Abdullaev",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "moment": "^2.24.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.6",
+    "sequelize-cli": "^5.5.1",
+    "telegraf": "^3.37.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "nodemon": "^2.0.2"
+  }
+}
