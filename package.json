@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Telegram Test Marker. That works.",
   "main": "index.js",
+  "engines": {
+    "node": "12.14.1"
+  },
   "scripts": {
     "start": "nodemon ./src --exec babel-node --presets babel-preset-env --plugins babel-plugin-transform-object-rest-spread",
+    "deploy": "babel-node ./src --presets babel-preset-env --plugins babel-plugin-transform-object-rest-spread",
     "update": "sequelize db:drop && sequelize db:create --charset utf8mb4 && sequelize db:migrate --debug && sequelize db:seed:all --debug"
   },
   "author": "Azamat Abdullaev",
