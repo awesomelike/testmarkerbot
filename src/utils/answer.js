@@ -1,3 +1,8 @@
+const isAnswerKeyValid = (text) => {
+  const regex = new RegExp(/^[a-zA-Z]{1,}$/g);
+  return regex.test(text);
+};
+
 const parseAnswer = (text) => {
   const regex = new RegExp(/^\d{1,}@[a-eA-E]{1,}$/);
   if (!regex.test(text)) return {};
@@ -22,4 +27,4 @@ const checkAnswer = (correctAnswer, answer) => {
   };
 };
 
-export { checkAnswer as default, parseAnswer };
+export { checkAnswer as default, parseAnswer, isAnswerKeyValid };

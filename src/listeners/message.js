@@ -2,7 +2,7 @@ import { ASK_ANSWER, ASK_ANSWER_KEY } from '../state/types';
 import models from '../../models';
 import sendIsPublic from '../messages/isPublic';
 import { individualResult } from '../messages/result';
-import checkAnswer, { parseAnswer } from '../utils/answer';
+import checkAnswer, { parseAnswer, isAnswerKeyValid } from '../utils/answer';
 import testMessage from '../messages/test';
 import testKeyboard from '../keyboards/test';
 
@@ -10,6 +10,7 @@ export default async (ctx) => {
   const { text } = ctx.message;
   switch (ctx.session.state) {
     case ASK_ANSWER_KEY:
+      if (!isAnswerKeyValid(text)) return ctx.reply('Noto\'g\'ri format kiritildi!');
       ctx.session.test.answerKey = text.toUpperCase();
       sendIsPublic(ctx);
       break;
