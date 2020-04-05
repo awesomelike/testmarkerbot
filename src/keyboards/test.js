@@ -1,3 +1,5 @@
+import { FINISH_TEST } from '../state/types';
+
 export default (testId) => ({
   reply_markup: {
     inline_keyboard: [
@@ -5,7 +7,7 @@ export default (testId) => ({
         {
           text: 'Testni yakunlash',
           callback_data: JSON.stringify({
-            action: 'finish',
+            action: FINISH_TEST,
             id: testId,
           }),
         },

@@ -3,3 +3,4 @@
 export const ASK_ANSWER_KEY = 'ASK_ANSWER_KEY';
 export const ASK_ANSWER = 'ASK_ANSWER';
 export const IS_PUBLIC = 'IS_PUBLIC';
+export const FINISH_TEST = 'FINISH_TEST';

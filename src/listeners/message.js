@@ -29,7 +29,7 @@ export default async (ctx) => {
         await models.Response.create({
           testId: test.id,
           fromId: ctx.chat.id,
-          fromName: ctx.chat.first_name,
+          fromName: ctx.chat.first_name + (ctx.chat.last_name ? (` ${ctx.chat.last_name}`) : ''),
           answer,
           score: correctAnswers,
         });
