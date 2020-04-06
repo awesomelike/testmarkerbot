@@ -29,6 +29,9 @@ export default async (ctx) => {
           {
             model: models.Response,
             as: 'responses',
+            order: [
+              ['score', 'DESC'],
+            ],
           },
         ],
       });
