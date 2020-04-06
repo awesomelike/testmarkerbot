@@ -19,14 +19,14 @@ const totalResults = (testId, createdAt, finishedAt, responses, isPublic, answer
   responses.forEach((response, i) => {
     message += `${i + 1}. ${response.fromName} ${response.score} ✅\n`;
   });
-  message += '\n';
   if (isPublic) {
-    message += 'To\'g\'ri javoblar: \n';
+    message += '\nTo\'g\'ri javoblar: \n';
     for (let i = 0; i < answerKey.length; i += 1) {
       message += `*${i + 1}.*${answerKey[i]} `;
     }
+    message += '\n';
   }
-  message += '\n\nSiz ham @thetestmarkerbot ga testingizni joylashtiring!';
+  message += '\nSiz ham @thetestmarkerbot ga testingizni joylashtiring!';
   return message;
 };
 const history = (testId, createdAt, finishedAt, responses, answerKey) => {
