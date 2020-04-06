@@ -29,9 +29,6 @@ export default async (ctx) => {
           {
             model: models.Response,
             as: 'responses',
-            order: [
-              ['score', 'DESC'],
-            ],
           },
         ],
       });
@@ -41,7 +38,7 @@ export default async (ctx) => {
         test.id,
         test.createdAt,
         test.finishedAt,
-        test.responses,
+        test.responses.sort((a, b) => (a.score < b.score ? 1 : -1)),
         test.isPublic,
         test.answerKey,
       );
