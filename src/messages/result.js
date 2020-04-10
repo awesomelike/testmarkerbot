@@ -1,7 +1,8 @@
 import moment from 'moment';
+import escaper from '../utils/escaper';
 
 const individualResult = (testId, name, correctAnswers, wrongAnswers) => `
-*F.I.Sh:* ${name}
+*F.I.Sh:* ${escaper(name)}
 *Test kodi:* ${testId}
 *To'g'ri javoblar soni:* ${correctAnswers} ✅
 *Noto'g'ri javoblar soni:* ${wrongAnswers} ❌
@@ -17,7 +18,7 @@ const totalResults = (testId, createdAt, finishedAt, responses, isPublic, answer
 *Reyting:*  
 `;
   responses.forEach((response, i) => {
-    message += `${i + 1}. ${response.fromName} ${response.score} ✅\n`;
+    message += `${i + 1}. ${escaper(response.fromName)} ${response.score} ✅\n`;
   });
   if (isPublic) {
     message += '\nTo\'g\'ri javoblar: \n';
@@ -37,7 +38,7 @@ const history = (testId, createdAt, finishedAt, responses, answerKey) => {
 *Reyting:*  
 `;
   responses.forEach((response, i) => {
-    message += `${i + 1}. ${response.fromName} ${response.score} ✅\n`;
+    message += `${i + 1}. ${escaper(response.fromName)} ${response.score} ✅\n`;
   });
   message += '\n';
   message += 'To\'g\'ri javoblar: \n';

@@ -8,6 +8,7 @@ require('dotenv').config();
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.use(session());
+
 hears(bot);
 commands(bot);
 listeners(bot);

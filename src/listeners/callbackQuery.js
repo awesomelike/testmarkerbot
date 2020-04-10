@@ -1,4 +1,3 @@
-
 import models from '../../models';
 import { IS_PUBLIC, FINISH_TEST } from '../state/types';
 import testMessage from '../messages/test';
