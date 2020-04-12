@@ -1,8 +1,10 @@
+import fs from 'fs';
 import models from '../../models';
 import { IS_PUBLIC, FINISH_TEST } from '../state/types';
 import testMessage from '../messages/test';
 import totalResults from '../messages/result';
 import testKeyboard from '../keyboards/test';
+import getPdf from '../utils/pdf';
 
 export default async (ctx) => {
   const data = JSON.parse(ctx.callbackQuery.data);
@@ -33,11 +35,12 @@ export default async (ctx) => {
       });
       await test.update({ status: 0, finishedAt: (new Date()).getTime() });
       await ctx.telegram.deleteMessage(ctx.chat.id, ctx.callbackQuery.message.message_id);
+      const sortedResponses = test.responses.sort((a, b) => (a.score < b.score ? 1 : -1));
       const totalResultsMessage = totalResults(
         test.id,
         test.createdAt,
         test.finishedAt,
-        test.responses.sort((a, b) => (a.score < b.score ? 1 : -1)),
+        sortedResponses,
         test.isPublic,
         test.answerKey,
       );
@@ -51,6 +54,9 @@ export default async (ctx) => {
           );
         }
       });
+      const pdf = getPdf(test.id, test.createdAt, test.finishedAt, sortedResponses);
+      await ctx.replyWithDocument({ source: fs.createReadStream(pdf), filename: pdf }, { caption: 'Test hisoboti PDF formatda' });
+      fs.unlinkSync(pdf);
       Promise.all(tasks)
         .then(() => console.log('Successfully sent to all!'))
         .catch((error) => console.error(error));

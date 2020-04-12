@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "mysql2": "^2.1.0",
+    "pdfmake": "^0.1.65",
     "sequelize": "^5.21.6",
     "sequelize-cli": "^5.5.1",
     "telegraf": "^3.37.0"
