@@ -32,12 +32,6 @@ export default (id, createdAt, finishedAt, responses) => {
               { text: 'Vaqt', style: 'tableHeader' },
               { text: 'Javoblar', style: 'tableHeader' },
             ],
-            // [{ text: '1', alignment: 'center' }, 'Another one here', 'OK?', '13845792457254'],
-            // [...responses.map(({ fromName, score, createdAt }, i) => [
-            //   { text: i + 1, alignment: 'center' },
-            //   fromName,
-            //   score,
-            //   formatTime(createdAt)])],
           ],
         },
       },
@@ -65,9 +59,13 @@ export default (id, createdAt, finishedAt, responses) => {
         color: 'black',
         alignment: 'center',
       },
+      footer: {
+        italics: true,
+      },
     },
     defaultStyle: {
       font: 'Roboto',
+      fontSize: 12,
     },
   };
   responses.forEach(({
@@ -84,6 +82,16 @@ export default (id, createdAt, finishedAt, responses) => {
       formatTime(createdAt),
       sentAnswer,
     ]);
+  });
+  docDefinition.content.push({
+    text: 'Hosted on: @thetestmarkerbot',
+    link: 'https://t.me/thetestmarkerbot',
+    style: 'footer',
+  });
+  docDefinition.content.push({
+    text: 'Powered by: @utkirovich_a',
+    link: 'https://t.me/utkirovich_a',
+    style: 'footer',
   });
   const pdf = printer.createPdfKitDocument(docDefinition);
   const fileName = `Hisobot_${id}.pdf`;
