@@ -37,7 +37,7 @@ export default async (ctx) => {
       try {
         await ctx.telegram.deleteMessage(ctx.chat.id, ctx.callbackQuery.message.message_id);
       } catch (error) {
-        ctx.replyWithMarkdown('Test muddati *48 soatdan* o\'tib ketgan!');
+        return ctx.replyWithMarkdown('Test muddati *48 soatdan* o\'tib ketgan!');
       }
       const sortedResponses = test.responses.sort((a, b) => (a.score < b.score ? 1 : -1));
       const totalResultsMessage = totalResults(
