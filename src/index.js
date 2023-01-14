@@ -12,6 +12,6 @@ bot.use(session());
 hears(bot);
 commands(bot);
 listeners(bot);
-// bot.on('message', (ctx) => ctx.replyWithDocument({ source: 'asd', file }, { cap }))
+
 bot.launch()
   .then(() => console.log('Bot started'));
