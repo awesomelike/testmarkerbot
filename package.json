@@ -19,7 +19,7 @@
     "moment": "^2.29.2",
     "mysql2": "^2.1.0",
     "pdfmake": "^0.1.65",
-    "sequelize": "^5.21.6",
+    "sequelize": "^6.28.2",
     "sequelize-cli": "^5.5.1",
     "telegraf": "^3.37.0"
   },
